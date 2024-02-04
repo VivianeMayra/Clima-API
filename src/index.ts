@@ -1,11 +1,14 @@
 import express from "express"
+import cors from "cors"
 import dotenv from "dotenv"
 dotenv.config()
 
 import weatherRoutes from "./routes/weatherRoutes"
 
 const app = express()
-const port = 3000
+const port = process.env.PORT ? Number(process.env.PORT) : 4000
+
+app.use(cors())
 
 app.get("/", (req, res) => {
   res.send("Bem-vindo ao Clima-API!")
